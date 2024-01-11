@@ -54,20 +54,21 @@
         - break문
         - continue문
  - 객체
- 스프레드 연산자
- 배열 메서드 (push, pop, shift, unshift, splice, slice) 2개 이상
- 배열 메서드 (forEach, map, filter, reduce, find) 3개 이상
- 자료구조 (Map, Set) 중 1개 이
- null과 undefined를 활용한 없는 값에 대한 처리
- callback 함수(setTimeout, setInterval) 활용
- DOM 제어
- module (import, export)
+ - 배열 메서드 (push, pop, shift, unshift, splice, slice) 2개 이상
+ - 배열 메서드 (forEach, map, filter, reduce, find) 3개 이상
+ - 자료구조 (Map, Set) 중 1개 이
+ - null과 undefined를 활용한 없는 값에 대한 처리
+ - callback 함수(setTimeout, setInterval) 활용
+ - DOM 제어
+ - module (import, export)
+   
 ### (2) 선택요구사항
- CSS
- flex, grid 사용하기
- 반응형 UI 구성하기
- 상세페이지 리뷰 수정 및 삭제 기능 구현
- 조건에 맞는 카드 리스트 정렬 기능(이름순, 별점순 등 자유롭게)
+ -CSS
+  - flex, grid 사용하기
+  - 반응형 UI 구성하기
+ - 상세페이지 리뷰 수정 및 삭제 기능 구현
+ - 메인페이지
+  - 조건에 맞는 카드 리스트 정렬 기능(이름순, 별점순 등 자유롭게)
  위에서 설명하지 않은 기타 외부 API
 
 🚩 역할 분담
