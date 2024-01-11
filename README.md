@@ -63,7 +63,7 @@
  - module (import, export)
    
 ### (2) 선택요구사항
- -CSS
+ - CSS
   - flex, grid 사용하기
   - 반응형 UI 구성하기
  - 상세페이지 리뷰 수정 및 삭제 기능 구현
