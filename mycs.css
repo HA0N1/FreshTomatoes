@@ -1,0 +1,66 @@
+/* @import "reset.css"; */
+header {
+  height: 200px;
+  /* margin-bottom: 50px; */
+}
+li {
+  list-style: none;
+}
+.site-name {
+  color: #ff004d;
+  text-align: center;
+  font-size: 40px;
+}
+.search {
+  text-align: center;
+}
+body {
+  background-color: #0e0f12;
+  color: #fff;
+}
+/* 무비 컨테이너 */
+#movies {
+  /* background-color: navy; */
+  display: flex;
+  /* 배치 방향 설정. column은 세로 */
+  flex-direction: row;
+  /* 화면에 요소가 다 담겼을 때 자동 줄바꿈 형태 */
+  flex-wrap: wrap;
+  /* 메인축 좌우*/
+  justify-content: center;
+  /* 수직축 위아래*/
+  align-items: center;
+}
+
+/* 컨테이너 안의 아이템뭉치들 */
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* background-color: firebrick; */
+
+  width: 400px;
+  height: 800px;
+  margin: 10px;
+}
+
+/* 마진줘서 이미지랑 글씨 떨어트리기 */
+.movie-card img {
+  margin: 10px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.movie-card ul {
+  text-align: left;
+  width: 300px;
+  padding: 5%;
+}
+
+/* child(숫자)나 first-child를 사용하면 특정 요소한테만 줄 수 있음! */
+.movie-card ul li:first-child {
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 20px;
+}
