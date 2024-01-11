@@ -7,10 +7,10 @@ const options = {
   }
 };
 
-fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options)
+fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options)
   .then((response) => response.json())
   .then((response) => {
-    const genre = response["genres"];
-    console.log(genre);
+    let results = response["results"];
+    console.log(results);
   })
   .catch((err) => console.error(err));
