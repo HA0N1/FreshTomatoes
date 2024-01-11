@@ -1,0 +1,15 @@
+header {
+  height: 200px;
+  /* margin-bottom: 50px; */
+}
+
+body {
+  background-color: #0e0f12;
+  color: #fff;
+}
+
+.site-name {
+  color: #ff004d;
+  text-align: center;
+  font-size: 40px;
+}
