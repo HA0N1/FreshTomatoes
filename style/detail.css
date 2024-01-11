@@ -27,18 +27,29 @@ body {
 }
 
 .movie-title {
-  font-size: 30px;
+  font-size: 40px;
+}
+
+hr {
+  margin: 20px 0 20px;
 }
 
 .movie-title span {
-  font-size: 18px;
+  font-size: 20px;
   color: gray;
 }
 
 .movie-info {
   margin-left: 30px;
+  font-size: 20px;
 }
 
 .movie-info p {
-  margin-bottom: 30px;
+  padding: 20px 0;
+}
+
+.overview {
+  padding-top: 20px;
+  font-size: 20px;
+  line-height: 180%;
 }
