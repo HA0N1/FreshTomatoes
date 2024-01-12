@@ -32,7 +32,7 @@
 
       .rating {
         font-size: 20px;
-        align-items: right;
+        /* Remove align-items: right; */
       }
 
       .likeButton {
@@ -44,9 +44,52 @@
       .likeButton:hover {
         color: #00d0ff;
       }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 500px;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .close {
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      .commentBtn {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        margin: 20px;
+      }
+      #btn {
+        width: 400px;
+        height: 50px;
+        border-radius: 10px;
+      }
     </style>
   </head>
   <body>
+    <div class="commentBtn">
+      <button id="btn" onclick="openModal()">코멘트남기기</button>
+    </div>
     <div class="cardContainer">
       <div class="card">
         <div class="cardHeader">
@@ -58,5 +101,43 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div id="reviewModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required /><br />
+
+        <label for="rating">평점:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required /><br />
+
+        <label for="reviewContent">리뷰 내용:</label>
+        <textarea id="reviewContent" name="reviewContent" rows="4" required></textarea><br />
+
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required /><br />
+
+        <button onclick="submitReview()">리뷰 제출</button>
+      </div>
+    </div>
+
+    <script>
+      // Functions to open and close the modal
+      function openModal() {
+        document.getElementById("reviewModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("reviewModal").style.display = "none";
+      }
+
+      // Function to handle review submission
+      function submitReview() {
+        // Add your logic to handle the submitted review data
+        // For now, just close the modal
+        closeModal();
+      }
+    </script>
   </body>
 </html>
