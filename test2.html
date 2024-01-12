@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/reset.css" />
+    <script async src="/src/testpush.js"></script>
     <style>
       .cardContainer {
         display: flex;
@@ -105,20 +106,22 @@
     <!-- 모달 -->
     <div id="reviewModal" class="modal">
       <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <label for="name">이름:</label>
-        <input type="text" id="name" name="name" required /><br />
+        <form id="save">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <label for="name">이름:</label>
+          <input type="text" id="name" name="name" required /><br />
 
-        <label for="rating">평점:</label>
-        <input type="number" id="rating" name="rating" min="1" max="5" required /><br />
+          <label for="rating">평점:</label>
+          <input type="number" id="rating" name="rating" min="1" max="5" required /><br />
 
-        <label for="reviewContent">리뷰 내용:</label>
-        <textarea id="reviewContent" name="reviewContent" rows="4" required></textarea><br />
+          <label for="reviewContent">리뷰 내용:</label>
+          <textarea id="reviewContent" name="reviewContent" rows="4" required></textarea><br />
 
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password" required /><br />
+          <label for="password">비밀번호:</label>
+          <input type="password" id="password" name="password" required /><br />
 
-        <button onclick="submitReview()">리뷰 제출</button>
+          <button type="submit">리뷰 제출</button>
+        </form>
       </div>
     </div>
 
@@ -132,9 +135,9 @@
         document.getElementById("reviewModal").style.display = "none";
       }
       //리뷰 작성하면 닫기
-      function submitReview() {
-        closeModal();
-      }
+      // function submitReview() {
+      //   closeModal();
+      // }
     </script>
   </body>
 </html>
