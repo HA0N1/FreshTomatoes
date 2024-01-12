@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/reset.css" />
+    <style>
+      .cardContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .card {
+        width: 300px;
+        height: 250px;
+        padding: 20px;
+        background-color: #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .rating {
+        font-size: 20px;
+        align-items: right;
+      }
+
+      .likeButton {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+
+      .likeButton:hover {
+        color: #00d0ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cardContainer">
+      <div class="card">
+        <div class="cardHeader">
+          <span>이름</span>
+          <span class="rating">⭐️⭐️⭐️⭐️⭐️</span>
+          <hr />
+          <p>내용</p>
+          <button class="likeButton">좋아요👍</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
