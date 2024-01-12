@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- 모달 -->
     <div id="reviewModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -123,19 +123,16 @@
     </div>
 
     <script>
-      // Functions to open and close the modal
+      //리뷰창 열기
       function openModal() {
         document.getElementById("reviewModal").style.display = "flex";
       }
-
+      //리뷰창 닫기
       function closeModal() {
         document.getElementById("reviewModal").style.display = "none";
       }
-
-      // Function to handle review submission
+      //리뷰 작성하면 닫기
       function submitReview() {
-        // Add your logic to handle the submitted review data
-        // For now, just close the modal
         closeModal();
       }
     </script>
