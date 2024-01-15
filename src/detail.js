@@ -1,5 +1,12 @@
-const moviesApiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-const genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
+const urlParams = new URLSearchParams(window.location.search);
+const movieId = urlParams.get("id");
+
+// 가져온 movieId를 사용하여 다양한 동작 수행
+console.log(movieId);
+
+const moviesApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`;
+// const moviesApiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
+const genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?language=ko";
 
 const options = {
   method: "GET",
@@ -18,8 +25,8 @@ async function fetchApi() {
     const data1 = await response1.json();
     const results = await data1.results;
     console.log(results);
-
-    // 메인에서 눌러서 넘어올 수 있는 건 아직 못했어요..
+    // const results = await data1.results;
+    console.log(data1);
 
     // top rated 0번째 인덱스 영화 불러오기
 
