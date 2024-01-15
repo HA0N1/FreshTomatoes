@@ -1,3 +1,4 @@
+//각 영화의 id값을 detail 페이지로 넘겨주고 이동
 function redirectToMoviePage(movieId) {
   window.location.href = `detail.html?id=${movieId}`;
 }
@@ -12,16 +13,16 @@ const options = {
   }
 };
 
-// search api를 가져와서 검색시 카드로 출력
+// search api에 검색값을 넣어 영화 제목이 비슷한 결과를 출력
 function searchApiName() {
   const movie_name_input = document.getElementById("in").value;
   const encodedSearchName = encodeURIComponent(movie_name_input);
   const searchApi = `https://api.themoviedb.org/3/search/movie?query=${encodedSearchName}&include_adult=false&language=ko-KR&page=1`;
+  // search api 에서 받아온 데이터로 카드 생성 및 출력
   fetch(searchApi, options)
     .then((response) => response.json())
     .then((fetch3Data) => {
       const cardsBoxSearch = document.getElementById("cards-box-search");
-
       cardsBoxSearch.innerHTML = fetch3Data.results
         .map(
           (movie, index) => `
@@ -109,7 +110,6 @@ function toggleMore(cardsBoxId) {
   for (let i = 0; i < cards.length; i++) {
     cards[i].classList.toggle("hidden", isExpanded && i >= 5);
   }
-
   // Toggle the state
   isExpanded = !isExpanded;
 }

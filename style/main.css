@@ -1,20 +1,24 @@
 /* @import "reset.css"; */
 /* 폰트추가 전체적용 */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Noto+Sans:ital,wght@0,400;0,900;1,900&display=swap");
 * {
   font-family: "Noto Sans", "Noto Sans KR", sans-serif;
 }
 header {
-  height: 200px;
-  /* margin-bottom: 50px; */
+  height: 500px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 li {
   list-style: none;
 }
 .site-name {
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+  height: 100px;
   color: #ff004d;
   text-align: center;
   font-size: 40px;
+  font-weight: 900;
 }
 .search {
   text-align: center;
