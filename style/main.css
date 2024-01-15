@@ -1,4 +1,10 @@
 /* @import "reset.css"; */
+/* 폰트추가 전체적용 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap");
+* {
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+}
+
 header {
   height: 200px;
   /* margin-bottom: 50px; */
@@ -9,7 +15,7 @@ li {
 .site-name {
   color: #ff004d;
   text-align: center;
-  font-size: 40px;
+  font-size: 60px;
 }
 .search {
   text-align: center;
@@ -32,29 +38,47 @@ body {
   align-items: center;
 }
 
+.card_bx {
+  /* background-color: navy; */
+  display: flex;
+  /* 배치 방향 설정. column은 세로 */
+  flex-direction: row;
+  /* 화면에 요소가 다 담겼을 때 자동 줄바꿈 형태 */
+  flex-wrap: wrap;
+  /* 메인축 좌우*/
+  justify-content: center;
+  /* 수직축 위아래*/
+  align-items: center;
+}
+
 /* 컨테이너 안의 아이템뭉치들 */
 .movie-card {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
   /* background-color: firebrick; */
-
-  width: 400px;
-  height: 800px;
+  width: 250px;
+  height: 90%;
   margin: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
 /* 마진줘서 이미지랑 글씨 떨어트리기 */
 .movie-card img {
+  width: 100%;
+  height: auto;
   margin: 10px;
   border-style: solid;
   border-radius: 5px;
+  display: block;
+  transition: filter 0.5s ease;
 }
 
 .movie-card ul {
-  text-align: left;
-  width: 300px;
+  text-align: right;
+  width: 100%;
   padding: 5%;
 }
 
@@ -62,5 +86,50 @@ body {
 .movie-card ul li:first-child {
   font-weight: bold;
   font-size: large;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+}
+
+.overlay {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: white;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 3;
+}
+
+.overlay-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* 어두운 배경을 위한 rgba 색상 */
+  z-index: 1; /* 이미지 위로 겹치도록 설정 */
+  transition: background-color 0.5s ease;
+}
+
+.movie-card:hover img {
+  filter: blur(3px);
+}
+
+.movie-card:hover .overlay {
+  opacity: 1;
+}
+
+.movie-card:hover .overlay-bg {
+  background-color: rgba(0, 0, 0, 0.5); /* 마우스 오버 시 어두운 배경 나타나게 함 */
+}
+
+.show-more {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
 }
