@@ -16,8 +16,10 @@ async function fetchApi() {
     // 영화정보 fetch
     const response1 = await fetch(moviesApiUrl, options);
     const data1 = await response1.json();
-    const results = data1.results;
+    const results = await data1.results;
     console.log(results);
+
+    // 메인에서 눌러서 넘어올 수 있는 건 아직 못했어요..
 
     // top rated 0번째 인덱스 영화 불러오기
     let orgnlTitle = results[6].original_title;
@@ -32,7 +34,7 @@ async function fetchApi() {
     // 장르정보 fetch
     const response2 = await fetch(genresApiUrl, options);
     const data2 = await response2.json();
-    const genres = data2.genres;
+    const genres = await data2.genres;
     console.log(genres);
 
     //장르 배열 정리된 배열로 만들기
