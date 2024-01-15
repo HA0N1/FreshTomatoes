@@ -1,3 +1,4 @@
+/* 카드 */
 .cardContainer {
   display: flex;
   flex-direction: row;
@@ -22,7 +23,7 @@
 .card:hover {
   transform: scale(1.05);
 }
-
+/* 좋아요 버튼 */
 .likeButton {
   cursor: pointer;
   border: none;
@@ -32,7 +33,7 @@
 .likeButton:hover {
   color: #00d0ff;
 }
-
+/* 모달 */
 .modal {
   display: none;
   position: fixed;
