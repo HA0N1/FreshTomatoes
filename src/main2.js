@@ -1,3 +1,8 @@
+// 클릭 시 다른 페이지로 이동하는 함수
+function redirectToMoviePage(movieId) {
+  // 선택된 영화의 ID를 다른 페이지로 전달하면서 이동
+  window.location.href = `detail.html?${movieId}`;
+}
 // api키 가져오기
 const options = {
   method: "GET",
@@ -21,7 +26,7 @@ function searchApiName() {
       cardsBoxSearch.innerHTML = fetch3Data.results
         .map(
           (movie, index) => `
-          <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="alert('영화 id : ${movie.id}')">
+          <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="redirectToMoviePage(${movie.id})">
           <div class="overlay-bg"></div>
           <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
           <div class ="overlay">
@@ -51,7 +56,7 @@ fetch(popularApi, options)
     cardsBoxPopular.innerHTML = fetch1Data.results
       .map(
         (movie, index) => `
-        <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="alert('영화 id : ${movie.id}')">
+        <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="redirectToMoviePage(${movie.id})">
         <div class="overlay-bg"></div>
                      <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
                      <div class ="overlay">
@@ -78,7 +83,7 @@ fetch(topratedApi, options)
     cardsBoxToprated.innerHTML = fetch2Data.results
       .map(
         (movie, index) => `
-   <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="alert('영화 id : ${movie.id}')">
+   <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="redirectToMoviePage(${movie.id})">
                      <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
                      <div class="overlay-bg"></div>
                      <div class ="overlay">
