@@ -4,7 +4,6 @@
 * {
   font-family: "Noto Sans", "Noto Sans KR", sans-serif;
 }
-
 header {
   height: 200px;
   /* margin-bottom: 50px; */
@@ -15,7 +14,7 @@ li {
 .site-name {
   color: #ff004d;
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
 }
 .search {
   text-align: center;
@@ -132,4 +131,5 @@ body {
 
 .hidden {
   display: none;
+  margin-bottom: 20px;
 }

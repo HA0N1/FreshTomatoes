@@ -3,6 +3,7 @@ function redirectToMoviePage(movieId) {
   // 선택된 영화의 ID를 다른 페이지로 전달하면서 이동
   window.location.href = `detail.html?${movieId}`;
 }
+
 // api키 가져오기
 const options = {
   method: "GET",
@@ -106,17 +107,9 @@ function toggleMore(cardsBoxId) {
   const cardsBox = document.getElementById(cardsBoxId);
   const cards = cardsBox.getElementsByClassName("movie-card");
 
-  // Toggle the 'hidden' class for cards based on the current state
+  // If expanded, show all cards; if collapsed, show only the first 5 cards
   for (let i = 0; i < cards.length; i++) {
-    if (isExpanded) {
-      // If expanded, hide cards beyond the first 5
-      if (i >= 5) {
-        cards[i].classList.add("hidden");
-      }
-    } else {
-      // If collapsed, show all cards
-      cards[i].classList.remove("hidden");
-    }
+    cards[i].classList.toggle("hidden", isExpanded && i >= 5);
   }
 
   // Toggle the state
