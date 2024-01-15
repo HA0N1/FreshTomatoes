@@ -1,4 +1,10 @@
 /* @import "reset.css"; */
+/* 폰트추가 전체적용 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap");
+* {
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+}
+
 header {
   height: 200px;
   /* margin-bottom: 50px; */
@@ -9,7 +15,7 @@ li {
 .site-name {
   color: #ff004d;
   text-align: center;
-  font-size: 40px;
+  font-size: 60px;
 }
 .search {
   text-align: center;
@@ -116,4 +122,14 @@ body {
 
 .movie-card:hover .overlay-bg {
   background-color: rgba(0, 0, 0, 0.5); /* 마우스 오버 시 어두운 배경 나타나게 함 */
+}
+
+.show-more {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
 }

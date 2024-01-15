@@ -20,13 +20,14 @@ function searchApiName() {
 
       cardsBoxSearch.innerHTML = fetch3Data.results
         .map(
-          (movie) => `
-          <div class="movie-card" onclick="alert('영화 id : ${movie.id}')">
+          (movie, index) => `
+          <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="alert('영화 id : ${movie.id}')">
           <div class="overlay-bg"></div>
           <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
           <div class ="overlay">
           <ul>
-           <li>${movie.title}</li>
+          <li>${movie.release_date.slice(0, 7)}</li>
+          <li>${movie.title}</li>
           </ul>
           </div>
       </div>`
@@ -49,13 +50,14 @@ fetch(popularApi, options)
     const cardsBoxPopular = document.getElementById("cards-box-popular");
     cardsBoxPopular.innerHTML = fetch1Data.results
       .map(
-        (movie) => `
-        <div class="movie-card" onclick="alert('영화 id : ${movie.id}')">
+        (movie, index) => `
+        <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="alert('영화 id : ${movie.id}')">
         <div class="overlay-bg"></div>
                      <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
                      <div class ="overlay">
                      <ul>
-                      <li>${movie.title}</li>
+                     <li>${movie.release_date.slice(0, 7)}</li>
+                     <li>${movie.title}</li>
                      </ul>
                      </div>
                  </div>
@@ -75,12 +77,13 @@ fetch(topratedApi, options)
 
     cardsBoxToprated.innerHTML = fetch2Data.results
       .map(
-        (movie) => `
-   <div class="movie-card" onclick="alert('영화 id : ${movie.id}')">
+        (movie, index) => `
+   <div class="movie-card ${index >= 5 ? "hidden" : ""}" onclick="alert('영화 id : ${movie.id}')">
                      <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
                      <div class="overlay-bg"></div>
                      <div class ="overlay">
                      <ul>
+                      <li>${movie.release_date.slice(0, 7)}</li>
                       <li>${movie.title}</li>
                      </ul>
                      </div>
@@ -91,6 +94,29 @@ fetch(topratedApi, options)
   .catch((error) => {
     console.error("Error fetching toprated data:", error);
   });
+
+let isExpanded = false;
+
+function toggleMore(cardsBoxId) {
+  const cardsBox = document.getElementById(cardsBoxId);
+  const cards = cardsBox.getElementsByClassName("movie-card");
+
+  // Toggle the 'hidden' class for cards based on the current state
+  for (let i = 0; i < cards.length; i++) {
+    if (isExpanded) {
+      // If expanded, hide cards beyond the first 5
+      if (i >= 5) {
+        cards[i].classList.add("hidden");
+      }
+    } else {
+      // If collapsed, show all cards
+      cards[i].classList.remove("hidden");
+    }
+  }
+
+  // Toggle the state
+  isExpanded = !isExpanded;
+}
 
 function searchBtn() {
   searchApiName();
