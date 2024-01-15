@@ -11,7 +11,14 @@ body {
 .site-name {
   color: #ff004d;
   text-align: center;
-  font-size: 40px;
+  font-size: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.site-name h2 {
+  font-size: 25px;
+  margin-top: 10px;
 }
 
 #select-movie {
