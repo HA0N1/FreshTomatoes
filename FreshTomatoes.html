@@ -15,15 +15,17 @@
         <h1>FreshTomatoes</h1>
       </div>
       <div class="search">
-        <p>
-          <input
-            id="in"
-            type="text"
-            onkeyup="if(event.keyCode==13){searchApiName()}"
-            placeholder="영화 제목을 입력하세요"
-          />
-          <button id="btn" type="button" onclick="searchApiName()">검색</button>
-        </p>
+        <input
+          id="in"
+          class="search-txt"
+          type="text"
+          onkeyup="if(event.keyCode==13){searchApiName()}"
+          placeholder="제목을 입력하세요"
+        />
+        <a class="search-btn" href="#">
+          <img src="./tomato.png" id="btn" type="button" onclick="searchApiName()" class="search-img" />
+          <!-- <button id="btn" type="button" onclick="searchApiName()">검색</button> -->
+        </a>
       </div>
     </header>
     <main>
