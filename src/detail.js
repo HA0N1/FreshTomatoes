@@ -13,7 +13,7 @@ const options = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNTZjYTlmMDI2YmE1NTE1NDNhMWRlZTQ3Y2RhYzVkMiIsInN1YiI6IjY1OTk5MDFjMGQxMWYyMDA5NWIzNDIzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wKl8XO9bVhJrNV5y_NjjxgfLHgT0B2DJxudykvs9EUY"
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZjYzNTM0Njc4ZTI1MjNlNzIxMDNlMzYyYWQxZWViNiIsInN1YiI6IjY1OGZjNTc2NGY5YTk5NzQ0Nzc2ZjdmMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F0FoX3lUzAIfTywlttR-OhjlBAMIbI71ZQxoja0E8S8"
   }
 };
 
@@ -58,7 +58,7 @@ async function fetchApi() {
       return resultArray;
     }
 
-    const inputNumbers = data1.genre_ids; //장르 id배열 삽입
+    const inputNumbers = data1.genres.map((genre) => genre.id); //장르 id배열 삽입
 
     const result = genreIdToName(inputNumbers);
     console.log(result);
@@ -70,7 +70,7 @@ async function fetchApi() {
             <p class="movie-title">${data1.title}&nbsp;<span>${orgnlTitle}</span></p>
             <hr>
             <p><span>Release_date</span> : ${data1.release_date}</p>
-            <p class="movie-genre"><span>Genre</span> : ${genreIdToName(data1.genre_ids)}</p>
+            <p class="movie-genre"><span>Genre</span> : ${genreIdToName(data1.genres.map((genre) => genre.id))}</p>
             <p><span>Rating</span> : ★ ${data1.vote_average}</p>
             <p class = "overview">${data1.overview}</p>
             <button type="button" onclick="location.href='/FreshTomatoes.html'">이전으로</button>

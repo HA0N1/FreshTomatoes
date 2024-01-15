@@ -1,7 +1,5 @@
-// 클릭 시 다른 페이지로 이동하는 함수
 function redirectToMoviePage(movieId) {
-  // 선택된 영화의 ID를 다른 페이지로 전달하면서 이동
-  window.location.href = `detail.html?${movieId}`;
+  window.location.href = `detail.html?id=${movieId}`;
 }
 
 // api키 가져오기
@@ -10,7 +8,7 @@ const options = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTg5YjJmZTBiOWQ3NWExNGQzMWMwM2EwMWViZmMxYyIsInN1YiI6IjY1OTRmM2M0YTY5OGNmNmNmMDQzYTExZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zr1q2WXcxaJmGs0cx8LLGmNxmiVmKFC0PLbJbrQvG94"
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZjYzNTM0Njc4ZTI1MjNlNzIxMDNlMzYyYWQxZWViNiIsInN1YiI6IjY1OGZjNTc2NGY5YTk5NzQ0Nzc2ZjdmMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F0FoX3lUzAIfTywlttR-OhjlBAMIbI71ZQxoja0E8S8"
   }
 };
 
