@@ -1,5 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
-const movieId = urlParams.get("id");
+export const movieId = urlParams.get("id");
 
 // 가져온 movieId를 사용하여 다양한 동작 수행
 console.log(movieId);
