@@ -1,12 +1,19 @@
-const moviesApiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-const genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
+const urlParams = new URLSearchParams(window.location.search);
+const movieId = urlParams.get("id");
+
+// 가져온 movieId를 사용하여 다양한 동작 수행
+console.log(movieId);
+
+const moviesApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`;
+// const moviesApiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
+const genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?language=ko";
 
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNTZjYTlmMDI2YmE1NTE1NDNhMWRlZTQ3Y2RhYzVkMiIsInN1YiI6IjY1OTk5MDFjMGQxMWYyMDA5NWIzNDIzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wKl8XO9bVhJrNV5y_NjjxgfLHgT0B2DJxudykvs9EUY"
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZjYzNTM0Njc4ZTI1MjNlNzIxMDNlMzYyYWQxZWViNiIsInN1YiI6IjY1OGZjNTc2NGY5YTk5NzQ0Nzc2ZjdmMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F0FoX3lUzAIfTywlttR-OhjlBAMIbI71ZQxoja0E8S8"
   }
 };
 
@@ -16,18 +23,18 @@ async function fetchApi() {
     // 영화정보 fetch
     const response1 = await fetch(moviesApiUrl, options);
     const data1 = await response1.json();
-    const results = await data1.results;
-    console.log(results);
+    // const results = await data1.results;
+    console.log(data1);
 
     // 메인에서 눌러서 넘어올 수 있는 건 아직 못했어요..
 
     // top rated 0번째 인덱스 영화 불러오기
-    let orgnlTitle = results[6].original_title;
-    console.log(String(results[6].title));
+    let orgnlTitle = data1.original_title;
+    console.log(String(data1.title));
     console.log(String(orgnlTitle));
 
     // 원제와 제목이 같다면 원제는 공백 처리
-    if (String(results[6].title) === String(orgnlTitle)) {
+    if (String(data1.title) === String(orgnlTitle)) {
       orgnlTitle = "";
     }
 
@@ -51,22 +58,22 @@ async function fetchApi() {
       return resultArray;
     }
 
-    const inputNumbers = results[6].genre_ids; //장르 id배열 삽입
+    const inputNumbers = data1.genres.map((genre) => genre.id); //장르 id배열 삽입
 
     const result = genreIdToName(inputNumbers);
     console.log(result);
 
     //select-movie 클래스 안에 삽입
     let movieHtml = `
-          <img src="https://image.tmdb.org/t/p/original${results[6].poster_path}" alt="${results[6].title}" />
+          <img src="https://image.tmdb.org/t/p/original${data1.poster_path}" alt="${data1.title}" />
           <div class = "movie-info">
-            <p class="movie-title">${results[6].title}&nbsp;<span>${orgnlTitle}</span></p>
+            <p class="movie-title">${data1.title}&nbsp;<span>${orgnlTitle}</span></p>
             <hr>
-            <p><span>Release_date</span> : ${results[6].release_date}</p>
-            <p class="movie-genre"><span>Genre</span> : ${genreIdToName(results[6].genre_ids)}</p>
-            <p><span>Rating</span> : ★ ${results[6].vote_average}</p>
-            <p class = "overview">${results[6].overview}</p>
-            <button type="button" onclick="location.href='/FreshTomatoes.html'">이전으로</button>
+            <p><span>개봉일</span> : ${data1.release_date}</p>
+            <p class="movie-genre"><span>장르</span> : ${genreIdToName(data1.genres.map((genre) => genre.id))}</p>
+            <p><span>평점</span> : ★ ${data1.vote_average}</p>
+            <p class = "overview">${data1.overview}</p>
+            <button type="button" onclick="location.href='./FreshTomatoes.html'">이전으로</button>
           </div>
         `;
 
