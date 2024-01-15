@@ -87,22 +87,43 @@ let boardsValue = function () {
   }
 };
 boardsValue();
-//  좋아요 기능 만들기
+
+// 좋아요 기능 만들기
 // 1. 누를 수 있게 하기
 // 2. 누를 때 마다 카운팅 되게 하기
 // 3. 된 값을 저장하여 두기
 // 4. 가져오기
-// step 1
-let likeButton = document.querySelector(".likeButton");
-let likeCount = document.querySelector(".likeCount");
-// step 2 텍스트를 숫자로 받아 담고 텍스트에 +1씩하며 값 저장
-let likeCounting = function () {
-  for (i = 0; i < boardsObj.length; i++) {
-    let count = parseInt(likeCount.innerText);
-    likeCount.innerText = count + 1;
-    boardsObj[i];
-  }
+//  1 : 누를 수 있게 하기
+let likeButtons = document.querySelectorAll(".likeButton");
+let likeCounts = document.querySelectorAll(".likeCount");
+
+boardsObj = JSON.parse(localStorage.getItem("boards")) || [];
+// 2 : 누를 때마다 카운팅
+let likeCounting = function (index) {
+  let count = parseInt(likeCounts[index].innerText);
+  likeCounts[index].innerText = count + 1;
+
+  // 3: local storage에 저장
+  let cardLikeCountKey = "likeCounting_" + index;
+  localStorage.setItem(cardLikeCountKey, likeCounts[index].innerText);
 };
-// step 3 localstorage에 저장해야함
-localStorage.setItem("likeCounting", likeCount.innerText);
-likeButton.addEventListener("click", likeCounting);
+
+// 2: 버튼 누를 때 마다 카운팅
+likeButtons.forEach((button, index) => {
+  button.addEventListener("click", () => likeCounting(index));
+});
+
+// 4: 좋아요 수와 인덱스 가지고오기
+let updateLikeCounts = function () {
+  likeCounts.forEach((count, index) => {
+    let cardLikeCountKey = "likeCounting_" + index;
+    let storedLikeCount = localStorage.getItem(cardLikeCountKey);
+
+    // ui 갈아끼워주기
+    if (storedLikeCount !== null) {
+      count.innerText = storedLikeCount;
+    }
+  });
+};
+
+updateLikeCounts();
