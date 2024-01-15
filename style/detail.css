@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Noto+Sans:ital,wght@0,400;0,900;1,900&display=swap");
+* {
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+}
+header {
+  height: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: #252627;
+}
+.wrapper {
+  padding-bottom: 30px;
+}
+
+.divider {
+  position: relative;
+  margin-top: 30px;
+  height: 1px;
+}
+
+.div-transparent:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, #bb0a21, transparent);
+}
+body {
+  background-color: #252627;
+  color: #fff;
+}
+
+.site-name {
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+  height: 100px;
+  color: #bb0a21;
+  text-align: center;
+  font-size: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.site-name h2 {
+  font-size: 25px;
+  margin-top: 10px;
+  font-weight: 400;
+  color: #fff;
+}
+main {
+  padding-top: 200px;
+  height: 100vh;
+}
+
+#select-movie {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 1400px;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #2d2e2e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#select-movie img {
+  width: 300px;
+  border-radius: 5px;
+}
+
+.movie-title {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+hr {
+  margin: 20px 0 20px;
+}
+
+.movie-title span {
+  font-size: 18px;
+  color: gray;
+}
+
+.movie-info {
+  margin-left: 30px;
+  font-size: 18px;
+}
+
+.movie-info p {
+  padding: 18px 0;
+}
+
+.overview {
+  padding-top: 20px;
+  font-size: 18px;
+  line-height: 180%;
+}
+
+.movie-info > button {
+  font-size: 15px;
+  width: 100px;
+  height: 40px;
+  float: right;
+  background: transparent;
+  color: white;
+  border-width: 0.5mm;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.movie-info > button:hover {
+  color: black;
+  background-color: white;
+}
+
+/* ------------------아래는 리뷰파트 css */
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}

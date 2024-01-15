@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         movieElement.querySelector("img").addEventListener("click", function () {
           window.alert(`영화 ID: ${id}`);
+          location.href = `./detail.html?id=${id}`;
         });
       }
 

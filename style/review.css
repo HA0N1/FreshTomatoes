@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Noto+Sans:ital,wght@0,400;0,900;1,900&display=swap");
+* {
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+}
+/* 카드 */
+.cardContainer {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 300px;
+  height: 250px;
+  padding: 20px;
+  background-color: #ced4da;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+/* 좋아요 버튼 */
+.likeButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.likeButton:hover {
+  color: #00d0ff;
+}
+
+.commentBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  margin: 20px;
+}
+#btn {
+  width: 400px;
+  height: 50px;
+  border-radius: 10px;
+} /* 모달 */
+.modal {
+  color: black;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#reviewModal button {
+  float: right;
+  margin-top: 10px;
+}
+
+#reviewModal {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#reviewModal input {
+  margin: 5px;
+}
+#submitReview {
+  border-radius: 5px;
+  font-size: 15px;
+}
+.rating {
+  float: right;
+  font-size: 20px;
+}
+
+.cardHeader {
+  position: relative;
+}
+
+.likeButton {
+  position: absolute;
+  bottom: -140px;
+  right: 15px;
+}
+
+.likeCount {
+  position: absolute;
+  bottom: -140px;
+  right: 0px;
+}
