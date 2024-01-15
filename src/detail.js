@@ -69,11 +69,11 @@ async function fetchApi() {
           <div class = "movie-info">
             <p class="movie-title">${data1.title}&nbsp;<span>${orgnlTitle}</span></p>
             <hr>
-            <p><span>Release_date</span> : ${data1.release_date}</p>
-            <p class="movie-genre"><span>Genre</span> : ${genreIdToName(data1.genres.map((genre) => genre.id))}</p>
-            <p><span>Rating</span> : ★ ${data1.vote_average}</p>
+            <p><span>개봉일</span> : ${data1.release_date}</p>
+            <p class="movie-genre"><span>장르</span> : ${genreIdToName(data1.genres.map((genre) => genre.id))}</p>
+            <p><span>평점</span> : ★ ${data1.vote_average}</p>
             <p class = "overview">${data1.overview}</p>
-            <button type="button" onclick="location.href='/FreshTomatoes.html'">이전으로</button>
+            <button type="button" onclick="location.href='./FreshTomatoes.html'">이전으로</button>
           </div>
         `;
 
