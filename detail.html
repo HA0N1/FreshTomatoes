@@ -11,9 +11,10 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
+    <script async src="/src/testpush.js"></script>
     <link rel="stylesheet" href="/style/reset.css" />
     <link rel="stylesheet" href="/style/detail.css" />
+    <link rel="stylesheet" href="style/review.css" />
   </head>
 
   <body>
@@ -26,19 +27,45 @@
       <div id="select-movie"></div>
 
       <hr />
-      <div id="review">
-        <div class="cardContainer">
-          <div class="card">
-            <div class="cardHeader">
-              <span>이름</span>
-              <span class="rating">:별:️:별:️:별:️:별:️:별:️</span>
-              <hr />
-              <p>내용</p>
-              <button class="likeButton">좋아요:+1:</button>
-            </div>
-          </div>
+      <div class="commentBtn">
+        <button id="btn" onclick="openModal()">코멘트남기기</button>
+      </div>
+      <div class="cardContainer"></div>
+
+      <!-- 모달 -->
+      <div id="reviewModal" class="modal">
+        <div class="modal-content">
+          <form id="save">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <label for="name">이름:</label>
+            <input type="text" placeholder="이름을 입력해주세요" id="name" name="name" required /><br />
+            <label for="rating">평점:</label>
+            <input type="number" id="rating" placeholder="1~5" name="rating" min="1" max="5" required /><br />
+            <label for="reviewContent">리뷰 내용:</label>
+            <textarea
+              id="reviewContent"
+              name="reviewContent"
+              rows="4"
+              required
+              placeholder="리뷰를 자유롭게 남겨주세요"
+            ></textarea
+            ><br />
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" placeholder="Password를 입력해주세요" name="password" required /><br />
+            <button id="submitReview" type="submit">리뷰 제출</button>
+          </form>
         </div>
       </div>
+      <script>
+        //리뷰창 열기
+        function openModal() {
+          document.getElementById("reviewModal").style.display = "flex";
+        }
+        //리뷰창 닫기
+        function closeModal() {
+          document.getElementById("reviewModal").style.display = "none";
+        }
+      </script>
     </main>
   </body>
 </html>

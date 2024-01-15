@@ -87,22 +87,22 @@ let boardsValue = function () {
   }
 };
 boardsValue();
-// //  좋아요 기능 만들기
-// // 1. 누를 수 있게 하기
-// // 2. 누를 때 마다 카운팅 되게 하기
-// // 3. 된 값을 저장하여 두기
-// // 4. 가져오기
-// // step 1
-// let likeButton = document.querySelector(".likeButton");
-// let likeCount = document.querySelector(".likeCount");
-// // step 2 텍스트를 숫자로 받아 담고 텍스트에 +1씩하며 값 저장
-// let likeCounting = function () {
-//   for (i = 0; i < boardsObj.length; i++) {
-//     let count = parseInt(likeCount.innerText);
-//     likeCount.innerText = count + 1;
-//      boardsObj[i];
-//   }
-// };
-// // step 3 localstorage에 저장해야함
-// localStorage.setItem("likeCounting", likeCount.innerText);
-// likeButton.addEventListener("click", likeCounting);
+//  좋아요 기능 만들기
+// 1. 누를 수 있게 하기
+// 2. 누를 때 마다 카운팅 되게 하기
+// 3. 된 값을 저장하여 두기
+// 4. 가져오기
+// step 1
+let likeButton = document.querySelector(".likeButton");
+let likeCount = document.querySelector(".likeCount");
+// step 2 텍스트를 숫자로 받아 담고 텍스트에 +1씩하며 값 저장
+let likeCounting = function () {
+  for (i = 0; i < boardsObj.length; i++) {
+    let count = parseInt(likeCount.innerText);
+    likeCount.innerText = count + 1;
+    boardsObj[i];
+  }
+};
+// step 3 localstorage에 저장해야함
+localStorage.setItem("likeCounting", likeCount.innerText);
+likeButton.addEventListener("click", likeCounting);
