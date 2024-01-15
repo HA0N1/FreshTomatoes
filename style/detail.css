@@ -54,6 +54,23 @@ hr {
   line-height: 180%;
 }
 
+.movie-info > button {
+  font-size: 15px;
+  width: 100px;
+  height: 40px;
+  float: right;
+  background: transparent;
+  color: white;
+  border-width: 0.5mm;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.movie-info > button:hover {
+  color: black;
+  background-color: white;
+}
+
 /* ------------------아래는 리뷰파트 css */
 .cardContainer {
   display: flex;

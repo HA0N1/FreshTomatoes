@@ -64,6 +64,7 @@ async function fetchApi() {
             <p class="movie-genre"><span>Genre</span> : ${genreIdToName(results[6].genre_ids)}</p>
             <p><span>Rating</span> : ★ ${results[6].vote_average}</p>
             <p class = "overview">${results[6].overview}</p>
+            <button type="button" onclick="location.href='/FreshTomatoes.html'">이전으로</button>
           </div>
         `;
 
