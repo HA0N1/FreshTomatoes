@@ -12,6 +12,7 @@ body {
   color: #ff004d;
   text-align: center;
   font-size: 40px;
+  cursor: pointer;
 }
 
 #select-movie {
