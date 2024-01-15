@@ -93,27 +93,27 @@ boardsValue();
 // 2. 누를 때 마다 카운팅 되게 하기
 // 3. 된 값을 저장하여 두기
 // 4. 가져오기
-//  step 1 : 누를 수 있게 하기
+//  1 : 누를 수 있게 하기
 let likeButtons = document.querySelectorAll(".likeButton");
 let likeCounts = document.querySelectorAll(".likeCount");
 
 boardsObj = JSON.parse(localStorage.getItem("boards")) || [];
-// step 2 : 누를 때마다 카운팅
+// 2 : 누를 때마다 카운팅
 let likeCounting = function (index) {
   let count = parseInt(likeCounts[index].innerText);
   likeCounts[index].innerText = count + 1;
 
-  // step 3: local storage에 저장
+  // 3: local storage에 저장
   let cardLikeCountKey = "likeCounting_" + index;
   localStorage.setItem(cardLikeCountKey, likeCounts[index].innerText);
 };
 
-// step 2: 버튼 누를 때 마다 카운팅
+// 2: 버튼 누를 때 마다 카운팅
 likeButtons.forEach((button, index) => {
   button.addEventListener("click", () => likeCounting(index));
 });
 
-// step 4: 좋아요 수와 인덱스 가지고오기
+// 4: 좋아요 수와 인덱스 가지고오기
 let updateLikeCounts = function () {
   likeCounts.forEach((count, index) => {
     let cardLikeCountKey = "likeCounting_" + index;
