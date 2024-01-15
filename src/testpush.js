@@ -77,6 +77,7 @@ let boardsValue = function () {
     <span class="rating">${starRating}</span>
     <hr />
     <p>${boardsReviewContent}</p>
+    <button data-index="${i}" class="delbtn">삭제</button>
     <button class="likeButton">좋아요👍</button>
     <span class="likeCount">0</span>
   </div>
@@ -106,3 +107,7 @@ let likeCounting = function () {
 // step 3 localstorage에 저장해야함
 localStorage.setItem("likeCounting", likeCount.innerText);
 likeButton.addEventListener("click", likeCounting);
+
+const delBtn = document.querySelector(".delbtn");
+
+console.log(boardsObj);

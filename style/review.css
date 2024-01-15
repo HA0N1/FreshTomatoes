@@ -12,7 +12,7 @@
 
 .card {
   width: 300px;
-  height: 250px;
+  height: 270px;
   padding: 20px;
   background-color: #ced4da;
   border-radius: 8px;
@@ -34,6 +34,11 @@
 
 .likeButton:hover {
   color: #00d0ff;
+}
+
+.delbtn {
+  border-radius: 8px;
+  background-color: transparent;
 }
 
 .commentBtn {
@@ -107,4 +112,9 @@
   position: absolute;
   bottom: -140px;
   right: 0px; /* Adjust the value based on your design preference */
+}
+
+.delbtn {
+  position: absolute;
+  bottom: -140px;
 }
