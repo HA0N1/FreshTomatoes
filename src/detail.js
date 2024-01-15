@@ -22,14 +22,6 @@ async function fetchApi() {
     // 메인에서 눌러서 넘어올 수 있는 건 아직 못했어요..
 
     // top rated 0번째 인덱스 영화 불러오기
-    let orgnlTitle = results[6].original_title;
-    console.log(String(results[6].title));
-    console.log(String(orgnlTitle));
-
-    // 원제와 제목이 같다면 원제는 공백 처리
-    if (String(results[6].title) === String(orgnlTitle)) {
-      orgnlTitle = "";
-    }
 
     // 장르정보 fetch
     const response2 = await fetch(genresApiUrl, options);
@@ -50,27 +42,39 @@ async function fetchApi() {
 
       return resultArray;
     }
+    const getId = window.location.search.substring(4);
+    for (let i = 0; i < results.length; i++) {
+      if (getId === String(results[i].id)) {
+        let orgnlTitle = results[i].original_title;
+        console.log(String(results[i].title));
+        console.log(String(orgnlTitle));
 
-    const inputNumbers = results[6].genre_ids; //장르 id배열 삽입
+        // 원제와 제목이 같다면 원제는 공백 처리
+        if (String(results[i].title) === String(orgnlTitle)) {
+          orgnlTitle = "";
+        }
 
-    const result = genreIdToName(inputNumbers);
-    console.log(result);
+        const inputNumbers = results[i].genre_ids; //장르 id배열 삽입
+        const result = genreIdToName(inputNumbers);
+        console.log(result);
 
-    //select-movie 클래스 안에 삽입
-    let movieHtml = `
-          <img src="https://image.tmdb.org/t/p/original${results[6].poster_path}" alt="${results[6].title}" />
+        //select-movie 클래스 안에 삽입
+        let movieHtml = `
+          <img src="https://image.tmdb.org/t/p/original${results[i].poster_path}" alt="${results[i].title}" />
           <div class = "movie-info">
-            <p class="movie-title">${results[6].title}&nbsp;<span>${orgnlTitle}</span></p>
+            <p class="movie-title">${results[i].title}&nbsp;<span>${orgnlTitle}</span></p>
             <hr>
-            <p><span>Release_date</span> : ${results[6].release_date}</p>
-            <p class="movie-genre"><span>Genre</span> : ${genreIdToName(results[6].genre_ids)}</p>
-            <p><span>Rating</span> : ★ ${results[6].vote_average}</p>
-            <p class = "overview">${results[6].overview}</p>
+            <p><span>Release_date</span> : ${results[i].release_date}</p>
+            <p class="movie-genre"><span>Genre</span> : ${genreIdToName(results[i].genre_ids)}</p>
+            <p><span>Rating</span> : ★ ${results[i].vote_average}</p>
+            <p class = "overview">${results[i].overview}</p>
             <button type="button" onclick="location.href='/FreshTomatoes.html'">이전으로</button>
           </div>
         `;
 
-    document.getElementById("select-movie").innerHTML += movieHtml;
+        document.getElementById("select-movie").innerHTML += movieHtml;
+      }
+    }
   } catch (error) {
     console.error("Error:", error);
     return []; // 실패시 에러출력
