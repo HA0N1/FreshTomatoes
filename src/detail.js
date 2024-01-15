@@ -5,7 +5,6 @@ export const movieId = urlParams.get("id");
 console.log(movieId);
 
 const moviesApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`;
-// const moviesApiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
 const genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?language=ko";
 
 const options = {
@@ -23,12 +22,8 @@ async function fetchApi() {
     // 영화정보 fetch
     const response1 = await fetch(moviesApiUrl, options);
     const data1 = await response1.json();
-    // const results = await data1.results;
     console.log(data1);
 
-    // 메인에서 눌러서 넘어올 수 있는 건 아직 못했어요..
-
-    // top rated 0번째 인덱스 영화 불러오기
     let orgnlTitle = data1.original_title;
     console.log(String(data1.title));
     console.log(String(orgnlTitle));

@@ -31,7 +31,7 @@ function searchApiName() {
           <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
           <div class ="overlay">
           <ul>
-          <li>${movie.release_date.slice(0, 7)}</li>
+          <li>${movie.release_date.slice(0, 4)}</li>
           <li>${movie.title}</li>
           </ul>
           </div>
@@ -61,7 +61,7 @@ fetch(popularApi, options)
                      <img class="cardImg" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" />
                      <div class ="overlay">
                      <ul>
-                     <li>${movie.release_date.slice(0, 7)}</li>
+                     <li>${movie.release_date.slice(0, 4)}</li>
                      <li>${movie.title}</li>
                      </ul>
                      </div>
@@ -88,7 +88,7 @@ fetch(topratedApi, options)
                      <div class="overlay-bg"></div>
                      <div class ="overlay">
                      <ul>
-                      <li>${movie.release_date.slice(0, 7)}</li>
+                      <li>${movie.release_date.slice(0, 4)}</li>
                       <li>${movie.title}</li>
                      </ul>
                      </div>
