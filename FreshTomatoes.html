@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FreshTomatoes</title>
-    <!-- <script type="module" src="./src/main.js"></script> -->
     <script defer src="./src/main2.js"></script>
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/main.css" />
@@ -15,15 +14,19 @@
         <h1>FreshTomatoes</h1>
       </div>
       <div class="search">
-        <p>
-          <input
-            id="in"
-            type="text"
-            onkeyup="if(event.keyCode==13){searchApiName()}"
-            placeholder="영화 제목을 입력하세요"
-          />
-          <button id="btn" type="button" onclick="searchApiName()">검색</button>
-        </p>
+        <input
+          id="in"
+          class="search-txt"
+          type="text"
+          onkeyup="if(event.keyCode==13){searchApiName()}"
+          placeholder="제목을 입력하세요"
+        />
+        <a class="search-btn" href="#">
+          <img src="./tomato.png" id="btn" type="button" onclick="searchApiName()" class="search-img" />
+        </a>
+      </div>
+      <div class="wrapper">
+        <div class="divider div-transparent"></div>
       </div>
     </header>
     <main>
