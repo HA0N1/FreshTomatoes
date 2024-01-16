@@ -1,10 +1,11 @@
+import { movieId } from "./detail.js";
 let name = document.getElementById("name");
 let rating = document.getElementById("rating");
 let reviewContent = document.getElementById("reviewContent");
 let password = document.getElementById("password");
 let form = document.getElementById("save");
-let cardHeader = document.querySelector(".cardHeader");
-let spanName = document.querySelector(".spanName");
+// let cardHeader = document.querySelector(".cardHeader");
+// let spanName = document.querySelector(".spanName");
 let cardContainer = document.querySelector(".cardContainer");
 
 class Board {
@@ -16,18 +17,18 @@ class Board {
     this._password = password;
   }
 
-  set name(vlaue) {
-    if (vlaue.length === 0) throw new Error("작성자를 입력해주세요");
+  set name(value) {
+    if (value.length === 0) throw new Error("작성자를 입력해주세요");
     this._name = vlaue;
   }
 
-  set reviewContent(vlaue) {
-    if (vlaue.length === 0) throw new Error("작성자를 입력해주세요");
+  set reviewContent(value) {
+    if (value.length === 0) throw new Error("작성자를 입력해주세요");
     this._reviewContent = vlaue;
   }
 
-  set password(vlaue) {
-    if (vlaue.length === 0) throw new Error("작성자를 입력해주세요");
+  set password(value) {
+    if (value.length === 0) throw new Error("작성자를 입력해주세요");
     this._password = password;
   }
 }
@@ -42,20 +43,21 @@ if (boardStr === null) {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  name = name.value;
-  rating = rating.value;
-  reviewContent = reviewContent.value;
-  password = password.value;
+  let nameValue = name.value;
+  let ratingValue = rating.value;
+  let reviewContentValue = reviewContent.value;
+  let passwordValue = password.value;
 
   try {
-    const boardsObj = JSON.parse(localStorage.getItem("boards"));
+    let boardsObj = JSON.parse(localStorage.getItem("boards_" + movieId));
 
     const index = boardsObj.length;
     const instance = new Board(index, name, rating, reviewContent, password);
+
     boardsObj.push(instance);
 
     const boardStr = JSON.stringify(boardsObj);
-    localStorage.setItem("boards", boardStr);
+    localStorage.setItem("boards_" + movieId, boardStr);
     window.location.reload();
   } catch (e) {
     alert(e.message);
@@ -63,10 +65,11 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-let boardsObj = JSON.parse(localStorage.getItem("boards"));
+let boardsObj = JSON.parse(localStorage.getItem("boards_" + movieId));
+
 // 저장된 데이터들을 순회하며 각 변수에 저장 후, 추가하기
 let boardsValue = function () {
-  for (i = 0; i < boardsObj.length; i++) {
+  for (let i = 0; i < boardsObj.length; i++) {
     let boardsName = boardsObj[i]._name;
     let boardsRating = boardsObj[i]._rating;
     let boardsReviewContent = boardsObj[i]._reviewContent;
@@ -96,10 +99,11 @@ boardsValue();
 // 2. 누를 때 마다 카운팅 되게 하기
 // 3. 된 값을 저장하여 두기
 // 4. 가져오기
+
 //  1 : 누를 수 있게 하기
 let likeButtons = document.querySelectorAll(".likeButton");
 let likeCounts = document.querySelectorAll(".likeCount");
-
+// 값이 없으면 빈배열로 초기화
 boardsObj = JSON.parse(localStorage.getItem("boards")) || [];
 // 2 : 누를 때마다 카운팅
 let likeCounting = function (index) {
@@ -107,10 +111,13 @@ let likeCounting = function (index) {
   likeCounts[index].innerText = count + 1;
 
   // 3: local storage에 저장
-  let cardLikeCountKey = "likeCounting_" + index;
+  let cardLikeCountKey = "likeCounting_" + movieId + "_" + index;
   localStorage.setItem(cardLikeCountKey, likeCounts[index].innerText);
 };
 
+function getLikeCountKey(index) {
+  return "likeCounting_" + movieId + "_" + index;
+}
 // 2: 버튼 누를 때 마다 카운팅
 likeButtons.forEach((button, index) => {
   button.addEventListener("click", () => likeCounting(index));
@@ -119,7 +126,7 @@ likeButtons.forEach((button, index) => {
 // 4: 좋아요 수와 인덱스 가지고오기
 let updateLikeCounts = function () {
   likeCounts.forEach((count, index) => {
-    let cardLikeCountKey = "likeCounting_" + index;
+    let cardLikeCountKey = getLikeCountKey(index);
     let storedLikeCount = localStorage.getItem(cardLikeCountKey);
 
     // ui 갈아끼워주기
@@ -149,3 +156,5 @@ delBtn.addEventListener("click", () => {
   alert("삭제완료");
   window.location.reload();
 });
+
+window.onload = updateLikeCounts;
