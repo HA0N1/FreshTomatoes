@@ -42,15 +42,19 @@ if (boardStr === null) {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  name = name.value;
-  rating = rating.value;
-  reviewContent = reviewContent.value;
-  password = password.value;
+  let nameValue = name.value;
+  let ratingValue = rating.value;
+  let reviewContentValue = reviewContent.value;
+  let passwordValue = password.value;
 
   try {
-    const boardsObj = JSON.parse(localStorage.getItem("boards"));
+    let boardsObj = JSON.parse(localStorage.getItem("boards_" + movieId));
 
-    const instance = new Board(name, rating, reviewContent, password);
+    if (boardsObj === null) {
+      boardsObj = [];
+    }
+
+    const instance = new Board(nameValue, ratingValue, reviewContentValue, passwordValue);
     boardsObj.push(instance);
 
     const boardStr = JSON.stringify(boardsObj);

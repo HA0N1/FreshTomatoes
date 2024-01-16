@@ -53,11 +53,6 @@ async function fetchApi() {
       return resultArray;
     }
 
-    const inputNumbers = data1.genres.map((genre) => genre.id); //장르 id배열 삽입
-
-    const result = genreIdToName(inputNumbers);
-    console.log(result);
-
     //select-movie 클래스 안에 삽입
     let movieHtml = `
           <img src="https://image.tmdb.org/t/p/original${data1.poster_path}" alt="${data1.title}" />
