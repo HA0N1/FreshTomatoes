@@ -2,7 +2,6 @@ const urlParams = new URLSearchParams(window.location.search);
 export const movieId = urlParams.get("id");
 
 // 가져온 movieId를 사용하여 다양한 동작 수행
-console.log(movieId);
 
 const moviesApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`;
 const genresApiUrl = "https://api.themoviedb.org/3/genre/movie/list?language=ko";
@@ -22,7 +21,7 @@ async function fetchApi() {
     // 영화정보 fetch
     const response1 = await fetch(moviesApiUrl, options);
     const data1 = await response1.json();
-    console.log(data1);
+
 
     let orgnlTitle = data1.original_title;
     console.log(String(data1.title));
@@ -37,7 +36,6 @@ async function fetchApi() {
     const response2 = await fetch(genresApiUrl, options);
     const data2 = await response2.json();
     const genres = await data2.genres;
-    console.log(genres);
 
     //장르 배열 정리된 배열로 만들기
     let newgenres = genres.map((obj) => ({ [obj.id]: obj.name }));

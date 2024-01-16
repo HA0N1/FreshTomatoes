@@ -9,7 +9,8 @@ let form = document.getElementById("save");
 let cardContainer = document.querySelector(".cardContainer");
 
 class Board {
-  constructor(name, rating, reviewContent, password) {
+  constructor(index, name, rating, reviewContent, password) {
+    this.index = index;
     this._name = name;
     this._rating = rating;
     this._reviewContent = reviewContent;
@@ -50,11 +51,9 @@ form.addEventListener("submit", (e) => {
   try {
     let boardsObj = JSON.parse(localStorage.getItem("boards_" + movieId));
 
-    if (boardsObj === null) {
-      boardsObj = [];
-    }
+    const index = boardsObj.length;
+    const instance = new Board(index, name, rating, reviewContent, password);
 
-    const instance = new Board(nameValue, ratingValue, reviewContentValue, passwordValue);
     boardsObj.push(instance);
 
     const boardStr = JSON.stringify(boardsObj);
@@ -83,6 +82,7 @@ let boardsValue = function () {
     <span class="rating">${starRating}</span>
     <hr />
     <p>${boardsReviewContent}</p>
+    <button data-index="${i}" class="delbtn">삭제</button>
     <button class="likeButton">좋아요👍</button>
     <span class="likeCount">0</span>
   </div>
@@ -135,5 +135,26 @@ let updateLikeCounts = function () {
     }
   });
 };
+
+updateLikeCounts();
+
+const idx = location.search;
+const index = idx.split("=")[1];
+const board = boardsObj[index];
+
+const delBtn = document.querySelector(".delbtn");
+
+delBtn.addEventListener("click", () => {
+  boardsObj.splice("index", 1);
+  console.log(boardsObj);
+  for (let i = 0; i < boardsObj.length; i++) {
+    boardsObj[i].index = i;
+  }
+
+  const setBoardsStr = JSON.stringify(boardsObj);
+  localStorage.setItem("boards", setBoardsStr);
+  alert("삭제완료");
+  window.location.reload();
+});
 
 window.onload = updateLikeCounts;
