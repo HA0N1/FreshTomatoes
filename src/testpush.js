@@ -146,5 +146,6 @@ delBtn.addEventListener("click", () => {
 
   const setBoardsStr = JSON.stringify(boardsObj);
   localStorage.setItem("boards", setBoardsStr);
+  alert("삭제완료");
   window.location.reload();
 });
